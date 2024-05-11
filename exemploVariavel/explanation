@@ -1,47 +1,19 @@
-Este contrato Solidity demonstra conceitos básicos de variáveis e funções, utilizando a linguagem de programação Solidity na versão 0.8.9. O contrato inclui:
+Este contrato Solidity demonstra conceitos intermediários de variáveis e funções, complementando o contrato anterior. Ele utiliza a linguagem de programação Solidity na versão 0.8.9 e inclui:
 
-Declaração de Variáveis:
-maxPermit: Uma variável pública uint8 com valor máximo de 255, representando um limite para alguma funcionalidade.
-testeLimit: Uma variável pública uint8 para armazenar um valor definido pelo usuário.
-negativo: Uma variável pública int256 com valor -1, demonstrando variáveis negativas.
-numero: Uma variável pública uint256 para armazenar um número inteiro positivo definido pelo usuário.
-numeroNegativo: Uma variável pública int256 para armazenar um número inteiro negativo definido pelo usuário.
+Declaração de Variáveis Avançadas:
+permissao: Uma variável pública bool para representar permissão (verdadeiro ou falso).
+contaRegistrada: Uma variável pública address para armazenar o endereço de uma conta.
+nome: Uma variável pública string para armazenar um nome (texto).
+Meusbytes: Uma variável pública bytes para armazenar dados binários.
 Funções:
-inseriMaxuint(uint8 _numero): Define o valor da variável testeLimit com o valor _numero recebido como parâmetro.
-inserirNumero(uint256 _numero): Define o valor da variável numero com o valor _numero recebido como parâmetro.
-testNegativo(int256 _numero) external view returns(int256): Função de visualização que recebe um número inteiro negativo _numero como parâmetro, calcula a soma entre negativo (valor -1) e _numero e retorna o resultado.
-Chamando o Smart Contract:
-Para interagir com o contrato, você precisará compilar e implantar o código Solidity na blockchain desejada. Uma vez implantado, você poderá chamar as funções do contrato usando ferramentas compatíveis com a blockchain, como carteiras Web3 ou interfaces DApp.
-
-Exemplo de Chamada de Função:
-
-Para definir o valor da variável testeLimit para 100, você pode usar a seguinte transação:
-
-contractInstance.inseriMaxuint(100);
-
--
-
-This Solidity contract demonstrates basic concepts of variables and functions, using the Solidity programming language in version 0.8.9. The contract includes:
-
-Variable Declaration:
-maxPermit: A public uint8 variable with a maximum value of 255, representing a limit for some functionality.
-testLimit: A public uint8 variable to store a user-defined value.
-negative: A public int256 variable with a value of -1, showing negative variables.
-numero: A public variable uint256 to store a positive integer defined by the user.
-numeroNegative: A public int256 variable to store a user-defined negative integer.
-Functions:
-inseriMaxuint(uint8 _numero): Sets the value of the testLimit variable to the value _numero received as a parameter.
-insertNumber(uint256 _number): Sets the value of the number variable with the value _number received as a parameter.
-testNegative(int256 _numero) external view returns(int256): Visualization function that receives a negative integer _numero as a parameter, calculates the sum between negative (value -1) and _numero and returns the result.
-Calling the Smart Contract:
-To interact with the contract, you will need to compile and deploy the Solidity code on the desired blockchain. Once deployed, you can call the contract's functions using blockchain-compatible tools, such as Web3 wallets or DApp interfaces.
-
-Example Function Call:
-
-To set the value of the testLimit variable to 100, you can use the following transaction:
-
-contractInstance.inseriMaxuint(100);
-
-To set the value of the testLimit variable to 100, you can use the following transaction:
-
-contractInstance.inseriMaxuint(100);
+mudarpermissao(bool _trueouFalse): Altera o valor da variável permissao para o valor _trueouFalse recebido como parâmetro.
+RegistrarEndereco(address _endereco): Define o endereço registrado na variável contaRegistrada com o valor _endereco recebido como parâmetro.
+registrarmeuendereco(string memory _meunome):
+Define o endereço registrado na variável contaRegistrada como o endereço do usuário que chama a função (utilizando msg.sender).
+Define o nome na variável nome com o valor _meunome recebido como parâmetro.
+armazenarDados (bytes memory _dados): Define o valor da variável Meusbytes com os dados binários _dados recebidos como parâmetro.
+convertStringBytes(string memory _minhafrase) external pure returns (bytes32): Função pura que converte uma string _minhafrase para um valor bytes32 (representando 32 bytes) e a retorna.
+obterTamanhoDados() public view returns (uint256): Função de visualização que retorna o tamanho (quantidade de bytes) dos dados armazenados em Meusbytes.
+inseriMaxuint(uint8 _numero): Função herdada do contrato anterior (veja a descrição anterior).
+inserirNumero(uint256 _numero): Função herdada do contrato anterior (veja a descrição anterior).
+testNegativo( int256 _numero) external view returns (int256): Função herdada do contrato anterior (veja a descrição anterior).
