@@ -1,0 +1,22 @@
+Este contrato Solidity demonstra o uso de operadores matemáticos, lógicos e condicionais na linguagem de programação Solidity (versão mínima 0.8.0). Ele apresenta:
+
+Variável de Estado:
+
+valor: Uma variável pública uint256 para armazenar um valor inteiro positivo.
+Funções Matemáticas:
+
+calcularMedia(uint256 a, uint256 b) public pure returns (uint256): Função pura que calcula a média de dois números a e b recebidos como parâmetros e retorna o resultado.
+multiplicacao(uint256 a, uint256 b) public pure returns(uint256): Função pura que calcula a multiplicação de dois números a e b recebidos como parâmetros e retorna o resultado.
+Funções Lógicas:
+
+verificarVerdadeiro(bool a, bool b) public pure returns(bool): Função pura que verifica se ambos os valores booleanos a e b são verdadeiros (utilizando o operador AND - &&). Retorna true se ambos forem verdadeiros, false caso contrário.
+verificarCondicional(bool a, bool b) public pure returns(bool): Função pura que verifica se ao menos um dos valores booleanos a ou b é verdadeiro (utilizando o operador OR - ||). Retorna true se ao menos um for verdadeiro, false se ambos forem falsos.
+Funções de Comparação:
+
+verificarMaior(uint256 a, uint256 b) public pure returns(bool): Função pura que verifica se o valor a é maior que b (utilizando o operador maior que - >). Retorna true se a for maior, false caso contrário.
+verificarIgual(uint256 a, uint256 b) public pure returns(bool): Função pura que verifica se os valores a e b são iguais (utilizando o operador igual a - ==). Retorna true se forem iguais, false caso contrário.
+verificarSeDiferente(uint256 a, uint256 b) public pure returns(bool): Função pura que verifica se os valores a e b são diferentes (utilizando o operador diferente - !=). Retorna true se forem diferentes, false se forem iguais.
+Funções de Acesso:
+
+setValor(uint256 novoValor) public: Função que define o valor da variável valor com o novoValor recebido como parâmetro. Possui validação para aceitar somente valores iguais ou maiores que 10.
+getValor() public view returns (uint256): Função de visualização que retorna o valor atual armazenado na variável valor.
