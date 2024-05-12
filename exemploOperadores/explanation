@@ -1,11 +1,11 @@
-Este contrato Solidity demonstra o uso de operadores matemáticos, lógicos e condicionais na linguagem de programação Solidity (versão mínima 0.8.0). Ele apresenta:
+Este contrato Solidity demonstra o uso de operadores matemáticos, lógicos e condicionais fundamentais, utilizando a linguagem de programação Solidity (versão mínima 0.8.0). Ele apresenta:
 
 Variável de Estado:
 
 valor: Uma variável pública uint256 para armazenar um valor inteiro positivo.
 Funções Matemáticas:
 
-calcularMedia(uint256 a, uint256 b) public pure returns (uint256): Função pura que calcula a média de dois números a e b recebidos como parâmetros e retorna o resultado.
+calcularMedia(uint256 a, uint256 b) public pure returns (uint256): Função pura que calcula a média aritmética de dois números a e b recebidos como parâmetros e retorna o resultado. (Há um erro no cálculo da média dentro da função, o correto seria (a + b) / 2 ao invés de (a + b) * 2).
 multiplicacao(uint256 a, uint256 b) public pure returns(uint256): Função pura que calcula a multiplicação de dois números a e b recebidos como parâmetros e retorna o resultado.
 Funções Lógicas:
 
