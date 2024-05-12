@@ -1,0 +1,21 @@
+Este contrato Solidity demonstra o uso de diferentes tipos de mappings para armazenar dados relacionados a uma turma escolar. O contrato utiliza a versão mínima 0.8.4 da linguagem de programação Solidity.
+
+Mappings:
+
+dicionario: Um mapping público mapping(string => string) que funciona como um dicionário simples, associando palavras (strings) aos seus significados (strings).
+presencaNumero: Um mapping público mapping(string => uint256) que registra a ordem de chegada dos alunos (nome do aluno - string) associada a um número de chegada (uint256).
+presenca: Um mapping público mapping(address => bool) que registra a presença de um aluno (endereço da carteira - address) com um valor booleano (true - presente, false - ausente).
+NotaProfAluno: Um mapping público mapping(address => mapping(address => uint256)) multidimensional que permite armazenar notas de um professor (endereço da carteira - address do professor) para cada aluno (endereço da carteira - address do aluno) associada a um valor inteiro (uint256) representando a nota.
+
+Funções de Manipulação:
+
+setarPalavrasAoDicio(string memory _palavra, string memory _significado) external: Função externa que permite adicionar uma nova palavra e seu significado ao mapping dicionario.
+setarNumpresenca(uint256 _numeroChegada, string memory _nomedoAluno) external: Função externa que registra a ordem de chegada de um aluno (_nomedoAluno - string) associada ao número de chegada (_numeroChegada - uint256) no mapping presencaNumero.
+setarPresenca() external: Função externa que permite a um aluno registrar sua presença. O endereço do remetente da transação (msg.sender) é utilizado como chave para o mapping presenca, e o valor é definido como true.
+setarNotaAluno(address _aluno, uint256 _nota) external: Função externa que permite a um professor (remetente da transação - msg.sender) atribuir uma nota (_nota - uint256) a um determinado aluno (_aluno - address) no mapping NotaProfAluno.
+
+Cenário de Uso - Turma Escolar:
+Alunos podem registrar sua presença através da função setarPresenca.
+Professores podem registrar notas dos alunos na função setarNotaAluno.
+Um dicionário simples pode ser criado com a função setarPalavrasAoDicio para consulta (opcional).
+O registro de ordem de chegada (setarNumpresenca) poderia ser utilizado para funcionalidades extras, como recompensas por chegar cedo (a implementação dessa funcionalidade não está inclusa no contrato).
