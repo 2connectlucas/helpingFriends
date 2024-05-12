@@ -1,19 +1,28 @@
-Este contrato Solidity demonstra conceitos intermediários de variáveis e funções, complementando o contrato anterior. Ele utiliza a linguagem de programação Solidity na versão 0.8.9 e inclui:
+Este contrato Solidity demonstra a declaração e utilização de diferentes tipos de variáveis para armazenar dados, incluindo a versão 0.8.9 da linguagem de programação Solidity. O contrato apresenta:
 
-Declaração de Variáveis Avançadas:
+Variáveis Simples:
+
+maxPermit: Uma variável pública uint8 com valor máximo de 255, representando um limite.
+testeLimit: Uma variável pública uint8 para armazenar um valor definido pelo usuário.
+negativo: Uma variável pública int256 com valor -1, demonstrando números negativos.
+numero: Uma variável pública uint256 para armazenar um número inteiro positivo definido pelo usuário.
+numeroNegativo: Uma variável pública int256 para armazenar um número inteiro negativo definido pelo usuário.
 permissao: Uma variável pública bool para representar permissão (verdadeiro ou falso).
+Variáveis Complexas:
+
 contaRegistrada: Uma variável pública address para armazenar o endereço de uma conta.
 nome: Uma variável pública string para armazenar um nome (texto).
 Meusbytes: Uma variável pública bytes para armazenar dados binários.
-Funções:
-mudarpermissao(bool _trueouFalse): Altera o valor da variável permissao para o valor _trueouFalse recebido como parâmetro.
-RegistrarEndereco(address _endereco): Define o endereço registrado na variável contaRegistrada com o valor _endereco recebido como parâmetro.
-registrarmeuendereco(string memory _meunome):
+Funções de Manipulação:
+
+mudarpermissao(bool _trueouFalse): Função externa que altera o valor da variável permissao para o valor _trueouFalse recebido como parâmetro.
+RegistrarEndereco(address _endereco): Função externa que define o endereço registrado na variável contaRegistrada com o valor _endereco recebido como parâmetro.
+registrarmeuendereco(string memory _meunome): Função externa que:
 Define o endereço registrado na variável contaRegistrada como o endereço do usuário que chama a função (utilizando msg.sender).
 Define o nome na variável nome com o valor _meunome recebido como parâmetro.
-armazenarDados (bytes memory _dados): Define o valor da variável Meusbytes com os dados binários _dados recebidos como parâmetro.
-convertStringBytes(string memory _minhafrase) external pure returns (bytes32): Função pura que converte uma string _minhafrase para um valor bytes32 (representando 32 bytes) e a retorna.
-obterTamanhoDados() public view returns (uint256): Função de visualização que retorna o tamanho (quantidade de bytes) dos dados armazenados em Meusbytes.
-inseriMaxuint(uint8 _numero): Função herdada do contrato anterior (veja a descrição anterior).
-inserirNumero(uint256 _numero): Função herdada do contrato anterior (veja a descrição anterior).
-testNegativo( int256 _numero) external view returns (int256): Função herdada do contrato anterior (veja a descrição anterior).
+armazenarDados (bytes memory _dados): Função pública que define o valor da variável Meusbytes com os dados binários _dados recebidos como parâmetro.
+convertStringBytes(string memory _minhafrase) external pure returns (bytes32): Função externa pura que converte uma string _minhafrase para um valor bytes32 (representando 32 bytes) e a retorna.
+obterTamanhoDados() public view returns (uint256): Função de visualização pública que retorna o tamanho (quantidade de bytes) dos dados armazenados em Meusbytes.
+inseriMaxuint(uint8 _numero): Função externa que define o valor da variável testeLimit com o valor _numero recebido como parâmetro.
+inserirNumero(uint256 _numero): Função externa que define o valor da variável numero com o valor _numero recebido como parâmetro.
+testNegativo( int256 _numero) external view returns (int256): Função de visualização externa que recebe um número inteiro negativo _numero como parâmetro, calcula a soma entre negativo (valor -1) e _numero e retorna o resultado.
