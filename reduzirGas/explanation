@@ -1,0 +1,12 @@
+Este contrato Solidity demonstra a diferença entre realizar uma operação matemática diretamente na linguagem Solidity e utilizar o opcode assembly para a mesma finalidade. O contrato utiliza a versão 0.8.4 do Solidity.
+
+Funções de Soma:
+somaEmSolidity(uint256 a, uint256 b) external pure returns(uint256): Função pública pura que realiza a soma de dois números a e b recebidos como parâmetros utilizando operadores matemáticos da linguagem Solidity. Retorna o valor da soma.
+somaEmOpcode(uint256 a, uint256 b) external pure returns(uint256 result): Função pública pura que realiza a soma de dois números a e b recebidos como parâmetros utilizando o opcode add da assembly language do Ethereum Virtual Machine (EVM). Retorna o valor da soma armazenado na variável result.
+
+Diferença de Abordagem:
+A função somaEmSolidity utiliza código Solidity de alto nível, que é compilado em opcodes do EVM durante o processo de deployment.
+A função somaEmOpcode utiliza diretamente o opcode add da assembly language do EVM, proporcionando potencialmente mais granularidade e controle sobre a instrução de soma.
+
+Observação sobre Consumo de Gás:
+É esperado que a função somaEmOpcode tenha um consumo de gás ligeiramente menor que a função somaEmSolidity. Isso ocorre porque a função baseada em opcode evita a sobrecarga de compilação associada à tradução de código Solidity para opcodes do EVM. No entanto, a diferença pode ser insignificante para operações matemáticas simples.
