@@ -1,0 +1,16 @@
+Este contrato Solidity demonstra o uso de construtores e modificadores para inicializar variáveis e controlar o acesso a funções. O contrato utiliza a versão mínima 0.8.4 da linguagem de programação Solidity.
+
+Variáveis de Estado:
+
+nome: Uma variável pública string para armazenar o nome.
+idade: Uma variável uint256 marcada como immutable, tornando seu valor imutável após a inicialização.
+
+Endereço Constante:
+
+owner: Um endereço address constante definido como 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4. Endereços constantes são gravados permanentemente no blockchain.
+Construtor:
+
+constructor(string memory _nome, uint256 _idade): O construtor é executado automaticamente durante a criação do contrato. Ele recebe dois parâmetros: _nome (string) e _idade (uint256) e define os valores iniciais para as variáveis de estado nome e idade (imutável).
+Função com Modificador:
+
+setNome(string memory _newName) external: Função externa que permite alterar o valor da variável nome. No entanto, ela possui o modificador require que verifica se o remetente da transação (msg.sender) é igual ao endereço owner definido como constante. Somente o proprietário (owner) pode alterar o nome através dessa função.
