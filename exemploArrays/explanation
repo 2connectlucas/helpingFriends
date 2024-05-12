@@ -1,0 +1,18 @@
+Este contrato Solidity demonstra o uso de diferentes tipos de arrays para armazenar dados relacionados a alunos, disciplinas e professores. O contrato utiliza a versão 0.8.4 da linguagem de programação Solidity.
+
+Declaração de Arrays:
+
+Alunos: Um array público string[4] para armazenar até 4 nomes de alunos.
+DisciplinaNome: Um array público string[] para armazenar dinamicamente nomes de disciplinas (tamanho não fixo).
+MatrizesDiscProf: Um array privado string[][] para armazenar matrizes bidimensionais (de strings) que associam disciplinas a professores.
+
+Funções de Manipulação:
+
+definirDisciplina(string memory nomeD) external: Função externa que adiciona um novo nome de disciplina (nomeD) ao final do array DisciplinaNome utilizando o método push.
+deletarElemento(uint256 numeroD) external: Função externa que tenta remover um elemento do array DisciplinaNome na posição especificada por numeroD. É importante ressaltar que a remoção física do elemento não ocorre, mas sim a atribuição do valor de default para string (que é uma string vazia).
+definirAluno(uint8 num, string memory novoAluno) external: Função externa que altera o nome do aluno na posição num do array Alunos com o valor novoAluno.
+definirProfeDisciplina(string memory disciplina, string memory professor) external: Função externa que adiciona uma nova sub-matriz ao array bidimensional MatrizesDiscProf. Cada sub-matriz armazena dois elementos: o nome da disciplina e o nome do professor associado.
+
+Função de Consulta:
+
+RetornarProfIndiceDisci(uint256 Indicedisciplina, uint256 IndiceProf) external view returns (string memory): Função de visualização externa que recebe dois índices (Indicedisciplina e IndiceProf) e retorna o valor (nome do professor) presente naquela posição específica da matriz bidimensional MatrizesDiscProf.
