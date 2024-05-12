@@ -1,0 +1,22 @@
+Este contrato Solidity demonstra conceitos de variáveis, funções e controle de acesso, utilizando a linguagem de programação Solidity na versão 0.8.18. Ele inclui:
+
+Variáveis de Estado:
+
+idade: Uma variável pública uint256 indicando a idade mínima permitida (predefinida como 18).
+sucess: Uma variável pública bool para indicar o sucesso de uma operação (inicialmente falsa).
+nome: Uma variável pública string para armazenar o nome do usuário.
+endereco: Uma variável pública address para armazenar o endereço da carteira do usuário.
+senha: Uma variável privada uint256 para armazenar a senha do usuário (não acessível diretamente).
+Funções:
+
+conferNumber(uint256 _idade) internal view: Função interna de visualização que verifica se a idade informada (_idade) é maior ou igual à idade mínima (idade). Rejeita o acesso caso a idade seja insuficiente.
+Atribuir(uint _numero)external pure returns(uint): Função externa pura que soma 3 ao número recebido (_numero) e retorna o valor resultante.
+EntraPlataform(string memory _nome, uint _idade) external returns (bool): Função externa que permite a entrada na plataforma.
+Utiliza conferNumber para validar a idade.
+Define o nome do usuário (nome) com o valor _nome recebido como parâmetro.
+Define sucess como true para indicar sucesso.
+Retorna sucess.
+gerarSenha() external returns (uint256): Função externa que gera uma senha aleatória utilizando keccak256 (função hash criptográfica) com dados do remetente, dificuldade do bloco e timestamp do bloco. Define a senha gerada (randomness) na variável privada senha e retorna o valor da senha.
+entreComsenha(uint256 _senha) external view returns (string memory): Função externa de visualização que permite a entrada com a senha.
+Verifica se a senha informada (_senha) corresponde à senha armazenada (senha) utilizando require.
+Retorna "sucesso no login" caso a senha esteja correta.
