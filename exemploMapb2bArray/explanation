@@ -1,0 +1,17 @@
+Este contrato Solidity demonstra o uso combinado de mappings e arrays para registrar e consultar saldos de contas em um cenário de relacionamento B2B (business-to-business). O contrato utiliza a versão mínima 0.8.4 da linguagem de programação Solidity.
+
+Armazenamento de Dados:
+
+balances: Um mapping público mapping(address => uint256) que armazena o saldo de cada conta associado ao seu endereço (address).
+inserido: Um mapping público mapping(address => bool) que verifica se um determinado endereço (address) já foi inserido no sistema (true) ou não (false).
+contas: Um array público address[] que armazena o histórico de endereços de contas cadastradas.
+
+Funções de Manipulação:
+
+set(address _conta, uint256 _val) external: Função externa que permite cadastrar uma nova conta.
+Adiciona o saldo (_val) para o endereço (_conta) no mapping balances.
+Define o registro de inserção (inserido[_conta]) como true.
+Adiciona o endereço (_conta) ao final do array contas.
+getSize() external view returns (uint256): Função de visualização externa que retorna o tamanho atual do array contas (quantidade de contas cadastradas).
+first() external view returns (uint256): Função de visualização externa que retorna o saldo da primeira conta cadastrada (acessando o valor no mapping balances através do primeiro endereço no array contas[0]).
+last() external view returns (uint256): Função de visualização externa que retorna o saldo da última conta cadastrada (acessando o valor no mapping balances através do último endereço no array contas[contas.length - 1]).
