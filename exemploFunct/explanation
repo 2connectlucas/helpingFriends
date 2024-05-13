@@ -1,0 +1,24 @@
+Este contrato Solidity demonstra conceitos de variáveis, funções internas, funções externas e funções puras. O contrato utiliza a versão mínima 0.8.4 da linguagem de programação Solidity.
+
+Variáveis de Estado:
+
+numero: Uma variável pública uint256 para armazenar um número inteiro.
+nome: Uma variável pública string para armazenar um nome.
+mensagem: Uma variável pública string para armazenar uma mensagem.
+valor: Uma variável privada uint256 para armazenar um valor interno (não acessível diretamente de fora do contrato).
+
+Funções:
+
+subNum(uint256 _numerodiv) internal: Função interna que divide um número (_numerodiv) por 2 e armazena o resultado na variável numero. (Funções internas só podem ser acessadas por outras funções dentro do mesmo contrato).
+setMsg(string memory _msg) public: Função externa que permite alterar o valor da variável mensagem com uma nova mensagem (_msg).
+setNomeNum(string memory _meunome, uint256 _numero) external: Função externa que:
+Define o nome (_meunome) na variável nome.
+Chama a função interna subNum para dividir o número (_numero) por 2 e armazenar o resultado em numero.
+Define a mensagem ("chamou pelo contrato") na variável mensagem.
+setValor(uint256 _valor) external: Função externa que define o valor da variável privada valor com um novo valor (_valor).
+getValor() external view returns (uint256): Função de visualização externa que retorna o valor atual da variável privada valor.
+multiplicar(uint256 x, uint256 y) external pure returns (uint256): Função externa pura que realiza a multiplicação de dois números x e y recebidos como parâmetros e retorna o resultado. Funções puras não modificam o estado do contrato (não alteram variáveis de estado) e não realizam operações que dependem do ambiente do blockchain (como acesso ao armazenamento ou uso de transações).
+
+Função para Receber Ether:
+
+payEther() external payable: Função externa marcada como payable que permite o contrato receber pagamentos em Ether. Esta função não possui implementação e serve como exemplo de como receber transferências para o contrato.
