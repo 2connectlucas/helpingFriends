@@ -1,0 +1,42 @@
+Este contrato Solidity demonstra o uso de modificadores para controlar o acesso a funções e implementar proteção contra reentrância. O contrato utiliza uma versão entre 0.8.2 e 0.9.0 da linguagem de programação Solidity.
+
+Variáveis de Estado:
+
+owner: Um endereço público address que armazena o proprietário do contrato.
+x: Uma variável pública uint256 com um valor inicial de 10.
+locked: Uma variável pública bool utilizada pelo modificador noReentrancy para evitar reentrância.
+
+Construtor:
+
+constructor(): O construtor define o proprietário (owner) como o remetente da transação (msg.sender) no momento da implantação do contrato.
+
+Modificadores:
+
+onlyOwner :
+Este modificador restringe a execução da função a qual ele é aplicado somente ao proprietário (owner) do contrato.
+Ele utiliza o require para verificar se o remetente (msg.sender) da transação é igual ao proprietário (owner).
+Se a condição não for atendida, a transação é rejeitada com a mensagem "Not owner".
+validAddress(address _addr):
+Este modificador garante que o endereço (_addr) passado como parâmetro para uma função não seja o endereço zero (address(0)).
+Ele utiliza o require para verificar a condição e retorna uma mensagem "Not Valid address" caso o endereço seja inválido.
+noReentrancy:
+Este modificador evita que uma função seja chamada novamente de forma recursiva durante a sua própria execução (reentrância).
+Ele utiliza a variável locked como flag de controle.
+Antes da execução da função (_), o modificador verifica se locked é false. Se for true, a transação é rejeitada com a mensagem "No reentrancy" pois indica que a função já está sendo executada.
+Durante a execução da função (_), locked é definido como true para impedir chamadas recursivas.
+Após a execução da função (_), locked é restaurado para false para permitir chamadas futuras.
+
+Funções:
+
+changeOwner(address _newOwner) public onlyOwner validAddress(_newOwner):
+Esta função permite alterar o proprietário (owner) do contrato.
+
+Ela possui dois modificadores:
+
+onlyOwner: garante que somente o proprietário atual pode chamar a função.
+validAddress(_newOwner): verifica se o novo proprietário (_newOwner) informado é um endereço válido (diferente de zero).
+decrement(uint256 i) public noReentrancy:
+Esta função decrementa o valor de x pelo valor de i.
+Ela possui o modificador noReentrancy para evitar que a função decrement seja chamada de forma recursiva dentro dela mesma, o que poderia levar a resultados inesperados.
+A função também possui uma chamada recursiva interna para subtrair valores maiores que 1 de forma iterativa.
+Durante a recursão, o modificador noReentrancy garante que nenhuma outra chamada externa possa interromper a execução.
