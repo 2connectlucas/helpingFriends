@@ -1,0 +1,25 @@
+Este código Solidity demonstra um contrato abstrato (Dados) e herança com outro contrato (SetInformation). A versão do Solidity utilizada é ^0.8.9.
+
+Contrato Dados (Abstract):
+É declarado como abstract, indicando que ele não pode ser diretamente implantado.
+
+Armazena duas variáveis de estado públicas:
+name do tipo string para armazenar um nome.
+age do tipo uint256 para armazenar uma idade.
+
+Define três funções virtuais:
+setName(string memory _name) (external): altera o valor de name.
+setAge(uint256 _age) (public): altera o valor de age.
+getDados() public view (virtual): retorna uma tupla contendo name e age.
+
+Contrato SetInformation:
+Herda do contrato Dados.
+Define uma variável pública dados do tipo Dados.
+
+Possui duas funções públicas:
+setAgeinDados(uint256 _age) (external): altera a idade (age) no contrato dados usando a função herdada setAge.
+getDadosforAbs() (external view): recupera os dados (nome e idade) chamando a função herdada getDados.
+
+Resumo:
+O contrato Dados é abstrato e serve como base para outros contratos herdarem suas funcionalidades.
+O contrato SetInformation herda do contrato Dados e demonstra como utilizar as funções virtuais para manipular os dados.
