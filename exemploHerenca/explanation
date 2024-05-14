@@ -1,0 +1,34 @@
+Este código demonstra conceitos de herança, construtores e sobrescrita de funções em contratos Solidity. A versão do Solidity utilizada está entre 0.8.2 e 0.9.0.
+
+Contratos Simples (X, Y):
+O contrato X possui uma variável pública name (string) e um construtor que recebe um nome como parâmetro e o armazena na variável.
+O contrato Y possui uma variável pública text (string) e um construtor similar ao de X.
+
+Herança Simples (B):
+O contrato B herda de X e Y através da sintaxe contract B is X("MaxFlip"), Y("Dev").
+Durante a construção de B, o construtor de X é chamado primeiro com o argumento "MaxFlip" para _name, seguido pelo construtor de Y com o argumento "Dev" para _text.
+
+Herança Múltipla (C):
+O contrato C também herda de X e Y, mas utiliza uma sintaxe diferente: contract C is X, Y.
+Nesse caso, a ordem de chamada dos construtores é indefinida. Para garantir a ordem desejada, o contrato C explicita a chamada dos construtores de X e Y no seu próprio construtor.
+
+Herança Múltipla com Ordem de Chamada (D):
+O contrato D herda de X e Y.
+Ele demonstra a explicitação da ordem de chamada dos construtores dentro do construtor de D.
+
+Funções Virtuais (A, F, O):
+O contrato A possui uma função virtual pura foo que retorna a string "A".
+O contrato F herda de A e sobrescreve a função foo para retornar "F". A sobrescrita é indicada pela palavra-chave override.
+O contrato O também herda de A e sobrescreve a função foo para retornar "O".
+
+Herança Diamante (J, Z):
+O contrato J herda de F e O.
+A função foo é herdada de ambas as classes bases (F e O).
+O modificador override é utilizado para indicar que a função está sobrescrevendo a implementação herdada.
+O contrato J utiliza super.foo() para chamar a implementação da função na classe base imediata (F no caso de J).
+O contrato Z é similar a J mas com a ordem de herança invertida (O e F). O resultado de super.foo() também será diferente devido à ordem de herança.
+
+Herança e Resolução de Ambiguidade (L):
+O contrato L herda de A e F.
+Ambos os contratos base (A e F) possuem a função foo.
+Ao sobrescrever foo em L, o modificador override exige a indicação explícita da classe base da qual a função está sendo sobrescrita (override(A, F)) para resolver a ambiguidade.
