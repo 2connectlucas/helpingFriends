@@ -1,0 +1,27 @@
+Este código Solidity demonstra conceitos de interfaces e integração com contratos externos através de um exemplo com contador e Uniswap. A versão do Solidity utilizada está entre 0.8.2 e 0.9.0.
+
+Contrato Counter (Contador):
+Variável count pública do tipo uint256 para armazenar a contagem.
+Função increment pública que incrementa o valor de count em 1.
+
+Interface ICounter:
+Define as funções que um contrato compatível deve implementar:
+count (view): retorna o valor atual da contagem.
+increment: incrementa o valor da contagem.
+
+Contrato MyContract (Meu Contrato):
+Função incrementCounter pública que recebe o endereço de um contrato implementando a interface ICounter.
+Converte o endereço para o tipo ICounter.
+Chama a função increment do contrato ICounter no endereço fornecido.
+Função getCount pública (view) que recebe o endereço de um contrato implementando a interface ICounter.
+Converte o endereço para o tipo ICounter.
+Chama a função count do contrato ICounter no endereço fornecido e retorna o valor.
+
+Contrato UniswapExample (Exemplo Uniswap):
+Variáveis privadas factory, dai e weth armazenam os endereços dos contratos da Factory Uniswap, token DAI e token WETH, respectivamente.
+
+Função getTokenReserves pública (view):
+Utiliza o contrato UniswapV2Factory para obter o endereço do par de tokens (DAI e WETH).
+Converte o endereço do par para o tipo UniswapV2Pair.
+Chama a função getReserves do contrato UniswapV2Pair para recuperar as reservas de ambos os tokens no par.
+Retorna as reservas de token 0 e token 1.
