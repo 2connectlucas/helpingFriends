@@ -1,0 +1,33 @@
+Título: Demonstrando Comunicação entre Contratos com Callee e CallerFunctions em Solidity
+Descrição:
+Este código demonstra padrões de comunicação entre contratos em Solidity usando dois contratos: Callee e CallerFunctions. O código utiliza a versão ^0.8.20 da linguagem Solidity.
+
+Contrato Callee:
+
+Armazena duas variáveis de estado públicas:
+x: Um inteiro sem sinal (uint256) para armazenar um valor.
+value: Outro inteiro sem sinal (uint256) para armazenar o valor de Ether recebido (opcional).
+
+Oferece duas funções públicas:
+setX(uint256 _x):
+Define o valor de x para o _x fornecido.
+Retorna o novo valor de x.
+setXandSendEther(uint256 _x) (payable):
+Define o valor de x para o _x fornecido.
+Armazena a quantidade de Ether enviada na transação (msg.value) na variável value.
+Retorna uma tupla contendo o novo valor de x e o valor de Ether armazenado.
+
+Contrato CallerFunctions:
+
+Fornece três funções públicas para interagir com o contrato Callee:
+setX(Callee _callee, uint256 _x):
+Recebe uma instância de um contrato Callee implantado (_callee) e um valor (_x) como argumentos.
+Chama a função setX no contrato _callee com o _x fornecido.
+setXFromAddress(address _addr, uint256 _x):
+Recebe o endereço (_addr) de um contrato Callee implantado e um valor (_x) como argumentos.
+Cria um novo objeto Callee usando o endereço fornecido (callee = Callee(_addr)) e então chama sua função setX com o _x fornecido.
+setXandSendEther(Callee _callee, uint256 _x) (payable):
+Recebe uma instância de um contrato Callee implantado (_callee) e um valor (_x) como argumentos.
+Envia Ether junto com a transação (indicado pela palavra-chave payable).
+Chama a função setXandSendEther no contrato _callee com o _x fornecido.
+Retorna uma tupla contendo o novo valor de x e o valor de Ether armazenado do contrato Callee.
