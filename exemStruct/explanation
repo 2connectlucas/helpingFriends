@@ -1,0 +1,30 @@
+Este código Solidity implementa um contrato básico de lista de tarefas (Todos). O código utiliza a versão Solidity ^0.8.9.
+
+Recursos do Contrato:
+
+Struct Todo: Define a estrutura de um item da lista de tarefas com duas propriedades:
+texto: String representando a descrição da tarefa.
+concluído: Boolean indicando se a tarefa está concluída.
+Array público todos: Armazena um array de structs Todo representando a lista de tarefas.
+
+Funções:
+
+create(string calldata _texto) (pública):
+Cria uma nova tarefa com o texto fornecido (_texto) e define concluído como falso.
+Utiliza dois métodos para alcançar a mesma funcionalidade:
+Insere diretamente usando um inicializador de struct.
+Cria um objeto tarefa temporário, define suas propriedades e depois o insere no array.
+
+get(uint256 _indice) (pública view):
+Recupera o item da lista de tarefas no índice especificado (_indice) do array todos.
+Retorna uma tupla contendo o texto da tarefa e seu status de conclusão.
+
+updateText(uint256 _indice, string calldata _texto) (pública):
+Atualiza o texto do item da lista de tarefas no índice especificado (_indice).
+Utiliza referência de armazenamento para modificar o item existente da lista diretamente.
+
+toggleCompleted(uint256 _indice) (pública):
+Inverte o status de conclusão do item da lista de tarefas no índice especificado (_indice).
+Utiliza referência de armazenamento para modificar a propriedade concluído diretamente.
+
+Este é um exemplo simples para fins de demonstração. Aplicativos de lista de tarefas do mundo real podem envolver recursos adicionais, como autenticação do usuário e mecanismos de persistência.
