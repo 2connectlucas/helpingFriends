@@ -1,0 +1,32 @@
+Este código Solidity demonstra técnicas de otimização de gas através de dois métodos somaSeForMenorque50 e somaSeForPareMenorque50opmize que calculam a soma de números pares menores que 50 em um array. O código utiliza a versão Solidity ^0.8.18.
+
+Contrato gasGolf:
+
+Variável de estado total do tipo uint256 para armazenar o valor da soma.
+
+Funções:
+
+somaSeForMenorque50(uint256[] memory nums) external:
+Itera através do array nums usando um loop for.
+
+Para cada elemento num:
+Verifica se num é par usando % 2 == 0.
+Verifica se num é menor que 50 usando < 50.
+Se ambas as condições forem verdadeiras, soma num ao total.
+
+somaSeForPareMenorque50opmize(uint256[] calldata nums) external (otimizada):
+Cria uma variável local _total para armazenar temporariamente o valor da soma.
+Armazena o comprimento do array nums em len para evitar chamadas repetidas à função length.
+Itera através do array nums usando um loop for.
+
+Para cada elemento num:
+Verifica se num é par usando % 2 == 0 e menor que 50 usando < 50 em uma única expressão condicional.
+Se a condição for verdadeira, soma num ao total.
+Utiliza o modificador unchecked para o incremento de i dentro do loop, pois a verificação de estouro (overflow) não é necessária neste caso.
+Após a iteração, atualiza a variável de estado total com o valor final armazenado em _total.
+
+A segunda função (somaSeForPareMenorque50opmize) demonstra técnicas para reduzir o custo de gas:
+Armazenando valores temporários em variáveis locais.
+Evitando chamadas de função desnecessárias.
+Combinando verificações condicionais.
+Utilizando o modificador unchecked quando apropriado.
